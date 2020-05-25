@@ -9,34 +9,35 @@ namespace tests.Models
         [Fact]
         public void Test_NewArtifactIsValid()
         {
-            Artifact art = new Artifact();
-            Assert.True(art != null);
+            Artifact artifact = new Artifact();
+
+            // Testing
+            Assert.False(artifact == null);
         }
     
         [Fact]
         public void Test_ArtifactWithDataIsValid()
         {
-            Artifact art = new Artifact();
-            art.created = DateTime.Now;
-            art.systemGroupId = "875678654gghjghjkgu658";
-            art.hostName = "myHost";
-            art.stigType = "Google Chrome";
-            art.stigRelease = "R13";
-            art.version = "1";
-            art.rawChecklist = "<xml></xml>";
-            art.updatedOn = DateTime.Now;
+            Artifact artifact = new Artifact();
 
-            // test things out
-            Assert.True(art != null);
-            Assert.True (!string.IsNullOrEmpty(art.created.ToShortDateString()));
-            Assert.True (!string.IsNullOrEmpty(art.systemGroupId));
-            Assert.True (!string.IsNullOrEmpty(art.hostName));
-            Assert.True (!string.IsNullOrEmpty(art.stigType));
-            Assert.True (!string.IsNullOrEmpty(art.stigRelease));
-            Assert.True (!string.IsNullOrEmpty(art.rawChecklist));
-            Assert.True (!string.IsNullOrEmpty(art.title));  // readonly from other fields
-            Assert.True (art.updatedOn.HasValue);
-            Assert.True (!string.IsNullOrEmpty(art.updatedOn.Value.ToShortDateString()));
+            artifact.created = DateTime.Now;
+            artifact.systemGroupId = "875678654gghjghjkgu658";
+            artifact.hostName = "myHost";
+            artifact.stigType = "Google Chrome";
+            artifact.stigRelease = "R13";
+            artifact.version = "1";
+            artifact.rawChecklist = "<xml></xml>";
+            artifact.updatedOn = DateTime.Now;
+
+            // Testing
+            Assert.True(artifact.systemGroupId == "875678654gghjghjkgu658");
+            Assert.True(artifact.hostName == "myHost");
+            Assert.True(artifact.stigType == "Google Chrome");
+            Assert.True(artifact.stigRelease == "R13");
+            Assert.True(artifact.version == "1");
+            Assert.True(artifact.rawChecklist == "<xml></xml>");
+            Assert.False(artifact.created == null);
+            Assert.False(artifact.updatedOn == null);
         }
     }
 }
